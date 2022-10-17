@@ -8,3 +8,7 @@ def denormalization(hand, hand_joint_num, img_height, img_width):
     denorm_y = int(min(math.floor(normalized_y * img_height), img_height - 1))
 
     return (denorm_x, denorm_y)
+
+
+
+
