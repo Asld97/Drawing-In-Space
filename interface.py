@@ -1,5 +1,5 @@
 import math
-
+import numpy as np
 # Function for denormalization joint coordinates
 
 
@@ -12,15 +12,13 @@ def denormalization(hand, hand_joint_num, img_height, img_width):
     return (denorm_x, denorm_y)
 
 def add_to_list(coord_list, hand):
-    try:
-        if len(coord_list) < 10:
-            coord_list.append([hand.landmark[8].x, hand.landmark[8].y])
-                            
-        else:                    
-            coord_list.pop(0)
-            coord_list.append([hand.landmark[8].x, hand.landmark[8].y])
-    except NameError:
-        coord_list = [[hand.landmark[8].x, hand.landmark[8].y]]
+    if coord_list.shape[0] < 10:        
+        coord_list = np.append(coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)
+                                 
+    else:                              
+        coord_list = np.delete(coord_list, 0, axis= 0)
+        coord_list = np.append(coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)        
+
     return coord_list   
      
         
