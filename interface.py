@@ -1,8 +1,7 @@
 import math
 import numpy as np
+
 # Function for denormalization joint coordinates
-
-
 def denormalization(hand, hand_joint_num, img_height, img_width):
     normalized_x = hand.landmark[hand_joint_num].x
     normalized_y = hand.landmark[hand_joint_num].y
