@@ -16,16 +16,13 @@ def add_to_list(coord_list, hand):
                                  
     else:                              
         coord_list = np.delete(coord_list, 0, axis= 0)
-        coord_list = np.append(coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)        
+        coord_list = np.append(coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)      
 
     return coord_list   
      
-def check_mean(coord_list):    
-        coord_mean = np.mean(coord_list, axis=0)
-        print(f"Mean: {coord_mean}")
-        # print(f"Mean value: {coord_mean}"    
-        if abs(coord_mean[0] - coord_list[coord_list.shape[0]-1][0]) <= 1 and abs(coord_mean[1] - coord_list[coord_list.shape[0]-1][1]) <= 1:
-            point = np.array([coord_mean[0], coord_mean[1]])
-            print(f"Point type: {type(point)}")
-            return point
+def check_mean(coord_list, coord_mean, precision):                  
+    if abs(coord_mean[0] - coord_list[coord_list.shape[0]-1][0]) <= precision and abs(coord_mean[1] - coord_list[coord_list.shape[0]-1][1]) <= precision:
+        return True
+    return False
+        
     
