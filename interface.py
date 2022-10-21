@@ -17,8 +17,7 @@ def add_to_list(coord_list, hand):
 
     else:
         coord_list = np.delete(coord_list, 0, axis=0)
-        coord_list = np.append(
-            coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)
+        coord_list = np.append(coord_list, [[hand.landmark[8].x, hand.landmark[8].y]], axis=0)
 
     return coord_list
 
